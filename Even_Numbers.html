@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>brainfuck</title>
+</head>
+
+<style type="text/css">
+
+textarea {
+	display: block;
+}
+
+input, select, textarea {
+color: #e67b5e;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+}
+
+.button {
+	width: 80px;
+	background-color: black;
+	color: white;
+}
+
+.text {
+	text-align: center;
+}
+
+.outputt {
+	color: white;
+	word-break: break-all;
+    white-space: normal;
+}
+
+.intsbox {
+	color: white;
+}
+
+</style>
+
+<script type="text/javascript" src="logic.js"> </script>
+
+<script type="text/javascript">
+	function startprogram() {
+
+		var answ = "0 2 4 6 8 10 12 14 16 18 20 22 24 26 28 30 32 34 36 38 40 42 44 46 48 50 52 54 56 58 60 62 64 66 68 70 72 74 76 78 80 82 84 86 88 90 92 94 96 98 100 102 104 106 108 110 112 114 116 118 120 122 124 126 128 130 132 134 136 138 140 142 144 146 148 150 152 154 156 158 160 162 164 166 168 170 172 174 176 178 180 182 184 186 188 190 192 194 196 198 200 202 204 206 208 210 212 214 216 218 220 222 224 226 228 230 232 234 236 238 240 242 244 246 248 250 252 254";
+
+		defineProblem(answ, 1, 0, "Even Numbers", 10);
+		attempt();	
+	}
+</script>
+<body background="bg_dark.jpg">
+	
+	<div class="center">
+		<div class="text">
+			<h1><a href="index.html" style="color:#666666">Even Numbers</a></h1>
+			<p style="color:#666666;">Your task is to write a program which prints all of the even numbers from 0 inclusive up to 254 inclusive. You are limited to 10 characters</p>
+		<div>
+
+		  <div class="container">
+		  		<textarea id="bfinput" name="brainfuck_input" rows="20" cols="90" style="background-color:#0d1018;"></textarea>
+
+		  		<!---  see logic.js for the parameters. string, type, take char or num-->
+		   		<br><br>
+		   		<button type="button" class="button" onclick="startprogram()">Run</button>
+		   		<br><br>
+		   		<textarea id="intsout" class="intsbox" name="integersout" rows="5" cols="90" style="background-color:#0d1018;"></textarea> 	
+		  <p id="outputtext" class="outputt" style="text-align: left;">
+		  	
+		  </p>
+
+		</div>
+	</div>
+</body>
+</html>

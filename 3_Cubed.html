@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>brainfuck</title>
+</head>
+
+<style type="text/css">
+
+textarea {
+	display: block;
+}
+
+input, select, textarea {
+color: #e67b5e;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+}
+
+.button {
+	width: 80px;
+	background-color: black;
+	color: white;
+}
+
+.text {
+	text-align: center;
+}
+
+.outputt {
+	color: white;
+	width: ;
+	word-break: break-all;
+    white-space: normal;
+}
+
+.intsbox {
+	color: white;
+}
+
+</style>
+
+<script type="text/javascript" src="logic.js"> </script>
+
+<script type="text/javascript">
+	function startprogram() {
+
+		var answ = "27";
+
+		defineProblem(answ, 1, 0, "3 Cubed", 22);
+		attempt();	
+	}
+</script>
+<body background="bg_dark.jpg">
+	
+	<div class="center">
+		<div class="text">
+			<h1><a href="index.html" style="color:#666666">3 Cubed</a></h1>
+			<p style="color:#666666;">Your task is to make a program which will output 3 cubed. The answer will be judged numerically. You are limited to a 22 character program.</p>
+		<div>
+
+		  <div class="container">
+		  		<textarea id="bfinput" name="brainfuck_input" rows="20" cols="90" style="background-color:#0d1018;"></textarea>
+
+		  		<!---  see logic.js for the parameters. string, type, take char or num-->
+		   		<br><br>
+		   		<button type="button" class="button" onclick="startprogram()">Run</button>
+		   		<br><br>
+		   		<textarea id="intsout" class="intsbox" name="integersout" rows="5" cols="90" style="background-color:#0d1018;"></textarea> 	
+		  <p id="outputtext" class="outputt" style="text-align: left;">
+		  	
+		  </p>
+
+		</div>
+	</div>
+</body>
+</html>

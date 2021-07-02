@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>brainfuck</title>
+</head>
+
+<style type="text/css">
+
+textarea {
+	display: block;
+}
+
+input, select, textarea {
+color: #e67b5e;
+}
+
+.container {
+	display: flex;
+	flex-direction: column;
+}
+
+.center {
+	margin: auto;
+	width: 50%;
+}
+
+.button {
+	width: 80px;
+	background-color: black;
+	color: white;
+}
+
+.text {
+	text-align: center;
+}
+
+.outputt {
+	color: white;
+	word-break: break-all;
+    white-space: normal;
+}
+
+.intsbox {
+	color: white;
+}
+
+</style>
+
+<script type="text/javascript" src="logic.js"> </script>
+
+<script type="text/javascript">
+	function startprogram() {
+
+		var answ = "0 5 10 15 20 25 30 35 40 45 50 55 60 65 70 75 80 85 90 95 100 105 110 115 120 125 130 135 140 145 150 155 160 165 170 175 180 185 190 195 200 205 210 215 220 225 230 235 240 245 250 255";
+
+		defineProblem(answ, 1, 0, "Count In Fives", 12);
+		attempt();	
+	}
+</script>
+<body background="bg_dark.jpg">
+	
+	<div class="center">
+		<div class="text">
+			<h1><a href="index.html" style="color:#666666">Count In Fives</a></h1>
+			<p style="color:#666666;">Your task is to write a program which outputs the numbers 0 to 255 counting in 5s. e.g 0 5 10 15 20 25 . . . 255. You are limited to a program consisting of 12 characters.</p>
+		<div>
+
+		  <div class="container">
+		  		<textarea id="bfinput" name="brainfuck_input" rows="20" cols="90" style="background-color:#0d1018;"></textarea>
+
+		  		<!---  see logic.js for the parameters. string, type, take char or num-->
+		   		<br><br>
+		   		<button type="button" class="button" onclick="startprogram()">Run</button>
+		   		<br><br>
+		   		<textarea id="intsout" class="intsbox" name="integersout" rows="5" cols="90" style="background-color:#0d1018;"></textarea> 	
+		  <p id="outputtext" class="outputt" style="text-align: left;">
+		  	
+		  </p>
+
+		</div>
+	</div>
+</body>
+</html>
