@@ -44,9 +44,6 @@ function compare_strings(a, b) {
 			return false;
 		}
 	}
-
-
-
 	return true;
 }
 
@@ -76,17 +73,35 @@ function strip_non_bf_chars(input_str) {
 	return outputstr;
 }
 
+function stripnlchar(string) {
+	var newstr = "";
+	var c;
+	for (c = 0; c < string.length; c++) {
+		if (string.charAt(c) != '\n') {
+			newstr += string.charAt(c);
+		}
+	}
+	return newstr;
+}
+
 // 0 for char, 1 for num
 function brainfuck_interpreter(input_str, char_or_num) {
+	var input_stream = "";
+	// initialize tape with 30000 cells
 	var tape = new Array(30000);
 
+	var take_chunk_input = false;
+
+	// zero all cells
 	var c;
 	for (c = 0; c < tape.length; c++) {
 		tape[c] = 0;
 	}
 
+	// output string returned 
+	// so that numeric values can be 
+	// made from it later.
 	var output_str = "";
-	var instr = "";
 
 	var cur_cell = 0;
 	var cur_instruction = 0;
@@ -109,7 +124,7 @@ function brainfuck_interpreter(input_str, char_or_num) {
 
 	if (start_bracket != 0) {
 		alert("Brackets do not match!");
-		return NaN;
+		return undefined;
 	}
 
 
@@ -196,7 +211,9 @@ function brainfuck_interpreter(input_str, char_or_num) {
 	 		}
 	 	}
 	 	else if (input_str[cur_instruction] == '.') {
-	 		output_str += String.fromCharCode(tape[cur_cell]);
+	 		var ch = String.fromCharCode(tape[cur_cell]);
+	 		output_str += ch 
+	 		document.getElementById("outstr").value += ch;
 	 	}
 	 	else if (input_str[cur_instruction] == ',') {
 
@@ -220,10 +237,45 @@ function brainfuck_interpreter(input_str, char_or_num) {
 		 		}
 	 		}
 	 		else
-	 		{
-	 			var valu = prompt("Type a single character").charAt(0).charCodeAt(0);
+	 		{	
 
-	 			tape[cur_cell] = valu;
+	 			if (input_stream.length == 0 && !take_chunk_input) {
+	 				input_stream = prompt("type input string: ");
+	 				if (input_stream.length >= 2) {
+	 					input_stream += '\n';
+	 					take_chunk_input = true;
+	 				}
+	 				else
+	 				{
+	 					var addnewline = confirm("append newline character?\nsome brainfuck programs may require this.");
+	 					if (addnewline) {
+	 						input_stream += '\n';
+	 					}
+	 				}
+	 			}
+
+	 			if (take_chunk_input) {
+	 				var ch = input_stream.charAt(0);
+	 				var valu = ch.charCodeAt(0);
+	 				tape[cur_cell] = valu;
+	 				input_stream = input_stream.substr(1);
+
+	 				if (input_stream.length == 0) {
+	 					take_chunk_input = false;
+	 				}
+	 			}
+	 			else
+	 			{
+	 				var ch = input_stream.charAt(0);
+	 				var valu = ch.charCodeAt(0);
+	 				tape[cur_cell] = valu;
+	 				input_stream = input_stream.substr(1);
+
+	 				// if (input_stream === '\n') {
+	 				// 	input_stream = "";
+	 				// }
+	 			}
+
 	 		}
 
 	 	}
@@ -268,6 +320,7 @@ function populate_ints_output(output) {
 
 function attempt() {
 		var inputstr = document.getElementById("bfinput").value;
+		document.getElementById("outstr").value = "";
 
 		var success = false;
 
@@ -276,9 +329,6 @@ function attempt() {
 
 		// char limit exceeded
 		var char_limit_exceeded = inputstr.length > char_limit;
-		console.log(inputstr.length);
-		console.log(char_limit);
-		console.log(char_limit_exceeded);
 
 		var output = undefined;
 
@@ -286,9 +336,9 @@ function attempt() {
 
 			output = brainfuck_interpreter(inputstr, char_or_num);
 
-			if (output != undefined) {
-				document.getElementById("outputtext").innerHTML = output;	
-			}
+			// if (output != undefined) {
+			// 	document.getElementById("outputtext").innerHTML = output;	
+			// }
 
 			instr = populate_ints_output(output);
 			
@@ -303,7 +353,7 @@ function attempt() {
 			// casual mode
 			output = brainfuck_interpreter(inputstr, char_or_num);
 			if (output != undefined) {
-				document.getElementById("outputtext").innerHTML = output;
+				document.getElementById("outstr").innerHTML = output;
 				instr = populate_ints_output(output);
 			}
 			
@@ -337,6 +387,7 @@ function attempt() {
 
 		document.getElementById("intsout").value = instr;
 		document.getElementById("intsout").style.backgroundColor = coloruse;
+		document.getElementById("outstr").style.backgroundColor = coloruse;
 
 		// if (success) {
 		// 	document.getElementById("bfinput").value += "\n\nNext challenge: 12389102839101920e1";
