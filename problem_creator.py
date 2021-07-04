@@ -51,6 +51,10 @@ color: #e67b5e;
 	color: white;
 }
 
+.inputbuttons {
+	display: flex;
+}
+
 </style>
 
 <script type="text/javascript" src="logic.js"> </script>
@@ -77,7 +81,11 @@ color: #e67b5e;
 
 		  		<!---  see logic.js for the parameters. string, type, take char or num-->
 		   		<br><br>
-		   		<button type="button" class="button" onclick="startprogram()">Run</button>
+		   		<div class="inputbuttons">
+		   			<button type="button" class="button" onclick="startprogram()">Run</button>
+		   			<input type="checkbox" id="chkbox">
+		   			<label style="color:#666666">append newline character to single character input?</label>
+		   		</div>
 		   		<br><br>
 		   		<textarea id="intsout" class="intsbox" name="integersout" rows="5" cols="90" style="background-color:#000000;"></textarea> 	
 		  		<textarea id="outstr" class="stringsout" name="stringsoutput" rows="5" cols="90" style="background-color:#000000;"></textarea> 	
@@ -88,22 +96,26 @@ color: #e67b5e;
 </html>
 """
 
-solution = "coffee"
+solution = ""
+for i in range(8):
+	solution += str(2 ** i) + ' '
+
+solution = solution[:-1]
 
 # 0 string, 1 numbers
-output_type = 0
+output_type = 1
 
 # 0 chars, 1 number
 input_type = 0
 
 # name
-problem_name = "coffee"
+problem_name = "Powers Of Two"
 
 # problem description
-problem_description = "Your task is simple. You must print coffee out in characters. You can use any number of characters for this problem."
+problem_description = "Your task is to output powers of two. That is: 1 ... 128"
 
 # character limit
-chars_limit = 10000000
+chars_limit = 16
 
 problem_template = problem_template.replace("SOLUTION", '"' + solution + '"')
 problem_template = problem_template.replace("OUTPUT_TYPE", str(output_type))

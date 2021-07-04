@@ -49,6 +49,10 @@ color: #e67b5e;
 	color: white;
 }
 
+.inputbuttons {
+	display: flex;
+}
+
 </style>
 
 <script type="text/javascript" src="logic.js"> </script>
@@ -76,7 +80,11 @@ color: #e67b5e;
 
 		  		<!---  see logic.js for the parameters. string, type, take char or num-->
 		   		<br><br>
-		   		<button type="button" class="button" onclick="startprogram()">Run</button>
+		   		<div class="inputbuttons">
+		   			<button type="button" class="button" onclick="startprogram()">Run</button>
+		   			<input type="checkbox" id="chkbox">
+		   			<label style="color:#666666">append newline character to single character input?</label>
+		   		</div>
 		   		<br><br>
 		   		<textarea id="intsout" class="intsbox" name="integersout" rows="5" cols="90" style="background-color:#000000;"></textarea> 	
 		   		<textarea id="outstr" class="stringsout" name="stringsoutput" rows="5" cols="90" style="background-color:#000000;"></textarea> 	

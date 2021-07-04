@@ -247,8 +247,9 @@ function brainfuck_interpreter(input_str, char_or_num) {
 	 				}
 	 				else
 	 				{
-	 					var addnewline = confirm("append newline character?\nsome brainfuck programs may require this.");
-	 					if (addnewline) {
+	 					var addnewline = document.getElementById("chkbox").checked;
+	 					console.log(addnewline);
+	 					if (addnewline && input_stream.length == 1) {
 	 						input_stream += '\n';
 	 					}
 	 				}
@@ -389,7 +390,4 @@ function attempt() {
 		document.getElementById("intsout").style.backgroundColor = coloruse;
 		document.getElementById("outstr").style.backgroundColor = coloruse;
 
-		// if (success) {
-		// 	document.getElementById("bfinput").value += "\n\nNext challenge: 12389102839101920e1";
-		// }
 }
