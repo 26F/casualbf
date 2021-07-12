@@ -97,8 +97,10 @@ color: #e67b5e;
 """
 
 solution = ""
-for i in range(8):
-	solution += str(2 ** i) + ' '
+i = 1
+while i <= 255:
+	solution += str(i) + ' '
+	i += 2
 
 solution = solution[:-1]
 
@@ -109,13 +111,13 @@ output_type = 1
 input_type = 0
 
 # name
-problem_name = "Powers Of Two"
+problem_name = "Odd Numbers"
 
 # problem description
-problem_description = "Your task is to output powers of two. That is: 1 ... 128"
+problem_description = "Your task is to output odd numbers from 1 to 255 in the first textarea (numeric output will be judged)"
 
 # character limit
-chars_limit = 16
+chars_limit = 11
 
 problem_template = problem_template.replace("SOLUTION", '"' + solution + '"')
 problem_template = problem_template.replace("OUTPUT_TYPE", str(output_type))
